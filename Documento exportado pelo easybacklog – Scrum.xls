@@ -1,0 +1,1903 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<Workbook xmlns:html='http://www.w3.org/TR/REC-html40'
+          xmlns:o='urn:schemas-microsoft-com:office:office'
+          xmlns:ss='urn:schemas-microsoft-com:office:spreadsheet'
+          xmlns:x='urn:schemas-microsoft-com:office:excel'
+          xmlns='urn:schemas-microsoft-com:office:spreadsheet'>
+  <DocumentProperties xmlns='urn:schemas-microsoft-com:office:office'>
+    <LastAuthor>Thiago Traczykowski</LastAuthor>
+    <Created>2015-12-06 23:57:11 UTC</Created>
+    <LastSaved>%= Time.now.utc %></LastSaved>
+    <Version>1.0</Version>
+  </DocumentProperties>
+  <OfficeDocumentSettings xmlns='urn:schemas-microsoft-com:office:office'>
+    <AllowPNG />
+  </OfficeDocumentSettings>
+  <ExcelWorkbook xmlns='urn:schemas-microsoft-com:office:excel'>
+    <ProtectStructure>False</ProtectStructure>
+    <ProtectWindows>False</ProtectWindows>
+  </ExcelWorkbook>
+  <Styles>
+    <Style ss:ID='Default' ss:Name='Normal'>
+      <Alignment ss:Vertical='Top' ss:WrapText='1' />
+      <Borders />
+      <Font ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' x:Family='Swiss' />
+      <Interior />
+      <NumberFormat />
+      <Protection />
+    </Style>
+    <Style ss:ID='title'>
+      <Alignment ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='15' />
+    </Style>
+    <Style ss:ID='top-base-stats'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Center' ss:WrapText='1' />
+      <Font ss:Bold='0' ss:Color='#000000' ss:FontName='Calibri' ss:Size='11' />
+    </Style>
+    <Style ss:ID='table-header'>
+      <Alignment ss:Horizontal='Center' ss:Vertical='Center' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='numeric'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Top'/>
+      <Font ss:Bold='0' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+    </Style>
+    <Style ss:ID='theme-summary'>
+      <Alignment ss:Horizontal='Left' ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#C0C0C0' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='theme-total'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+      <Interior ss:Color='#C0C0C0' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='theme-cell'>
+      <Alignment ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='12' />
+    </Style>
+    <Style ss:ID='backlog-summary'>
+      <Alignment ss:Horizontal='Left' ss:Vertical='Top' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='14' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    <Style ss:ID='backlog-total'>
+      <Alignment ss:Horizontal='Right' ss:Vertical='Bottom' ss:WrapText='1' />
+      <Font ss:Bold='1' ss:Color='#000000' ss:FontName='Calibri' ss:Size='14' />
+      <Interior ss:Color='#CCFFFF' ss:Pattern='Solid' />
+    </Style>
+    
+  </Styles>
+  <Worksheet ss:Name='Backlog Report'>
+  <Table>
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Theme-->
+    <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--ID-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--User Story-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Acceptance Criteria-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Comments-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Sprint-->
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Status-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Score -->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Cost-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Days-->
+    <Row ss:AutoFitHeight='0' ss:Height='18'>
+      <Cell ss:MergeAcross='3' ss:StyleID='title'>
+        <Data ss:Type='String'>Sati</Data>
+      </Cell>
+      <Cell ss:MergeAcross='4' ss:StyleID='top-base-stats'>
+        <Data ss:Type='String'>Taxa: R$ 125, Velocity: 6.0</Data>
+      </Cell>
+    </Row>
+    <Row>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Tema</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>ID</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>História de Usuário</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Critérios de Aceitação</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Comentários</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Sprint</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Status</Data>
+      </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'><span class="translation_missing" title="translation missing: pt.backlog.points">Points</span></Data>
+        </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'>Custo</Data>
+        </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'>Dias</Data>
+        </Cell>
+    </Row>
+        <Row>
+      <Cell ss:MergeDown='5' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Palestrantes</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> inserir dados de um palestrante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> um palestrante esteja cadastrado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Nome do Palestrante Obrigatório&#10;&#13;b) Cache do Palestrante Obrigatório&#10;&#13;c) RG e CPF obrigatórios&#10;&#13;d) Disponibilidade de datas e horários obrigatória&#10;&#13;e) Título da palestra&#10;&#13;f) Pelo menos uma forma de contato</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para cadastro de palestrante estarão disponíveis campos de Nome, Valor do Cache, Rg, CPF, sexo, idade, disponibilidade para palestra, tema da palestra, título da palestra telefone para contato, email para contato.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Criar um cronograma de palestras
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa ser divulgada uma agenda de palestras</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Formato de calendário&#10;&#13;b) Dia editável&#10;&#13;c) Nome do palestrante&#10;&#13;d) Hora da palestra</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>No cronograma de palestras estarão visíveis dias e horários das palestras com nome do palestrante e possibilidade de editar cada entrada no dia. Também possuirá impressão do cronograma detalhado como na versão web, e versão simplificada com somente dias e palestrantes.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> gerar certificado para o palestrante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> ele possa ter um comprovante de que realizou uma palestra</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Certificado seja comprovável&#10;&#13;b) Seja possível imprimir&#10;&#13;c) Conste nome do palestrante&#10;&#13;d) Rg do palestrante&#10;&#13;e) Assinatura do *diretor*||**coordenador**</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Certificado do palestrante será gerado afim de confirmar a participação do mesmo na SATI.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Palestrante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> me comunicar com os organizadores
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa discutir deforma rápida e confiável assuntos importantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Formato de e-mail interno&#10;&#13;b) Nome do remetente&#10;&#13;c) Nome do destinatário&#10;&#13;d) Assunto da mensagem&#10;&#13;e) Mensagem</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sistema de comunicação interno entre palestrantes e organizadores</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> delegar voluntários assistente
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> todos os palestrantes tenham pelo menos um voluntário disponível</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Listagem de voluntários com a designação de assistente&#10;&#13;b) Quadro de horários disponiveis por voluntário</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Uma tela para gerenciamento de alunos assistentes com seus palestrantes designados ou a serem designados.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Palestrantes&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>18.0 pontos / R$ 375 / 3.0 dias</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='4' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Caixa</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> visualizar o fluxo de entrada e saída de dinheiro
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa controlar os valores recebidos e gastos</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Gastos e entradas separados em categorias&#10;&#13;b) Data/Hora de cada movimentação&#10;&#13;c) Totais por categoria&#10;&#13;d) Definir período de fluxo de caixa&#10;&#13;e) Demostrar forma de pagamento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Formato de tabela para melhor leitura.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> verificar quantidade de dinheiro disponível
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa planejar onde destinar tais fundos.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Demostrar quantidade liquida de dinheiro disponível</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Tela para mostrar quanto dinheiro disponível existe e poder reservar uma certa quantidade.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> visualizar as saídas futuras
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa planejar como pagar</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Data/Hora das próximas saidas&#10;&#13;b) Valor das saidas&#10;&#13;c) Forma de pagamento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Tela para demonstrar as saidas futuras, pagamentos em à ver.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> visualizar as entradas futuras
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa planejar o que fazer com tais fundos</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Data/Hora das próximas entradas&#10;&#13;b) Valor das entradas&#10;&#13;c) Forma de pagamento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Tela para demonstrar as entradas futuras, pagamentos em à ver.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Caixa&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>12.0 pontos / R$ 250 / 2.0 dias</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='3' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Minicurso</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>MIN1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> cadastrar um minicurso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> um minicurso esteja cadastrado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RG e CPF obrigatórios&#10;&#13;b) Nome do professor Obrigatório&#10;&#13;c) Disponibilidade de datas e horários obrigatória&#10;&#13;d) Título do minicurso&#10;&#13;e) Pelo menos uma forma de contato&#10;&#13;f) Cronograma do minicurso</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para cadastro de minicurso estarão disponíveis campos de Nome, Rg, CPF, sexo, idade, disponibilidade para aula, tema do minicurso, título do minicurso telefone para contato, email para contato, cronograma da aula.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>MIN2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Professor
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> validar presença no minicurso de um aluno
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> ele possa validar o seu certificado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Nome do aluno&#10;&#13;b) Opções de presente ou não&#10;&#13;c) Separados por minicursos diferentes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Simples lista de chamada por minicurso</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>MIN3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> verificar horários de minicurso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa ter base do seu cronograma</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Data e hora do minicurso&#10;&#13;b) Nome do minicurso&#10;&#13;c) Professor&#10;&#13;d) Formato de tabela</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Simples cronograma dos minicursos que o aluno está inscrito</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Minicurso&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>8.0 pontos / R$ 167 / 1.3 dias</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='3' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Certificação</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CEO1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Gerar certificações da SATI
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Imprimir os certificados dos participantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Para certificação da SATI, participante deverá totalizar no minimo dezesseis horas nas atividades</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O sistema valida se o participante tem presença suficiente nas atividades realizadas na SATI para receber o certificado.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CEO3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Gerar certificações de evento diverso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Imprimir os certificados dos participantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Para certificação de evento, o participante deverá ter presença no evento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O sistema valida se o participante tem presença no evento para receber certificado.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>CEO2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Gerar certificações de minicursos
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Imprimir os certificados dos participantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Para certificação de minicursos, o participante deverá ter presença no minicurso</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O sistema valida se o participante tem presença no minicurso para receber certificado.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Certificação&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>7.0 pontos / R$ 146 / 1.2 dias</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='2' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Professores</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PRO1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Cadastrar funções para voluntários
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Designar funções para voluntários</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Inserir atividades para os voluntários&#10;&#13;b) Definir quantidade de voluntários por função </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Cadastros de atividades que serão disponibilizadas para atribuir aos voluntários</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>PRO2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Designar funções para voluntários
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Registrar as atividades que os voluntários realizaram na SATI</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome Completo obrigatório&#10;&#13;c) Atribuir atividades para o voluntário </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para atribuir as atividades para os voluntários</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Professores&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>6.0 pontos / R$ 125 / 1.0 dia</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='6' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Alunos</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Matricular aluno na sati
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Validar participação do aluno na SATI e gerar certificação</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório&#10;&#13;c) Email obrigatório&#10;&#13;d) RG e CPF obrigatório&#10;&#13;e) Gerar boleto da matrícula</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>As informações necessárias para a matricula do aluno  na sati são: RA, Nome , CPF, RG, sexo, Idade, curso, telefone e email para contato.Boletos gerados com vencimento de 30 dias de antecedência recebem 15% de desconto e com 15 dias de antecedência recebem 5% de desconto.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> me matricular em minicurso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Validar participação no minicurso e gerar certificação</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório&#10;&#13;c) Email obrigatório&#10;&#13;d) RG e CPF obrigatório&#10;&#13;e) Gerar boleto da matrícula</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>As informações necessárias para a matricula do aluno nos minicursos são: RA, Nome , CPF, RG, sexo, Idade, curso, telefone e email para contato. E o aluno poderá se inscrever em no máximo 3 minicursos. Boletos gerados com vencimento de 30 dias de antecedência recebem 15% de desconto e com 15 dias de antecedência recebem 5% de desconto.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> me matricular em evento diverso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Validar participação no evento e gerar certificação</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Email obrigatório&#10;&#13;c) Nome completo obrigatório&#10;&#13;d) RG e CPF obrigatório&#10;&#13;e) Gerar boleto da matrícula caso haja taxa de inscrição</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>As informações necessárias para a matricula do aluno nos eventos são: RA, Nome , CPF, RG, sexo, Idade, curso, telefone e email para contato.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Acompanhar status da matrícula 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Confirmar status da matrícula</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Confirmação dos dados do aluno, RA, nome e CPF&#10;&#13;b) Situação da matrícula&#10;&#13;c) Gerar segunda via do boleto</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O aluno poderá acompanha a situação da matrícula na SATI e minicursos e outros eventos.E caso necessário imprimir a segunda via do boleto. Para segunda via dos boletos, os gerados com vencimento de 30 dias de antecedência recebem 15% de desconto e com 15 dias de antecedência recebem 5% de desconto.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Cadastrar como voluntário
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Disponibilizar como voluntário</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório&#10;&#13;c) Disponibilidade&#10;&#13;d) Pelo menos uma forma de contato</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O aluno poderá se cadastrar para ser voluntário na SATI e é necessário que o aluno informe a disponibilidade</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Voluntário
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Acompanhar designação de atividades
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Verificar atividades atribuidas ao voluntário</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O voluntário poderá verificar quais tarefas foram atribuídas.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Alunos&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>24.0 pontos / R$ 500 / 4.0 dias</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+    <Row>
+      <Cell ss:MergeDown='1' ss:StyleID='theme-cell'>
+        <Data ss:Type='String'>Eventos diversos</Data>
+      </Cell>
+      <Cell ss:Index='2'>
+  <Data ss:Type='String'>EVD1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> cadastrar um eventos
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> um evento diferente seja cadastrado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Descrição do evento&#10;&#13;b) Nome do evento&#10;&#13;c) Disponibilidade de datas e horários obrigatória&#10;&#13;d) Cronograma do evento&#10;&#13;e) Se existe taxa para inscrição ou não&#10;&#13;f) Pelo menos uma forma de contato&#10;&#13;g) Não ser um minicurso ou palestra&#10;&#13;h) Nome do organizador</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para cadastro de eventos diversos que não seja minicursos ou palestras haverá uma tela com descrição do evento, nome, horário, se será taxado ou não, forma de contato com o organizador, nome do organizador, cronograma do evento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+  <Row>
+    <Cell ss:Index='2' ss:MergeAcross='2' ss:StyleID='theme-summary'>
+      <Data ss:Type='String'>Total do tema &#x27;Eventos diversos&#x27;</Data>
+    </Cell>
+    <Cell ss:MergeAcross='4' ss:StyleID='theme-total'>
+      <Data ss:Type='String'>5.0 pontos / R$ 104 / 0.8 dias</Data>
+    </Cell>
+  </Row>
+  <Row ss:AutoFitHeight='0' ss:Height='5'>
+    <Cell ss:MergeAcross='9' />
+  </Row>
+
+    <Row ss:AutoFitHeight='0' ss:Height='18'>
+      <Cell ss:MergeAcross='3' ss:StyleID='backlog-summary'>
+        <Data ss:Type='String'>Total do Backlog &#x27;Sati&#x27;</Data>
+      </Cell>
+      <Cell ss:MergeAcross='4' ss:StyleID='backlog-total'>
+        <Data ss:Type='String'>80.0 pontos / R$ 1.667 / 13.3 dias</Data>
+      </Cell>
+    </Row>
+  </Table>
+  <WorksheetOptions xmlns='urn:schemas-microsoft-com:office:excel'>
+    <PageLayoutZoom>0</PageLayoutZoom>
+    <Selected />
+    <Panes />
+    <ProtectObjects>False</ProtectObjects>
+    <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+</Worksheet>
+  <Worksheet ss:Name='Story List'>
+  <Table>
+    <Column ss:AutoFitWidth="1" ss:Width="90" /> <!--Theme-->
+    <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--ID-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--User Story-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Acceptance Criteria-->
+    <Column ss:AutoFitWidth="1" ss:Width="240" /> <!--Comments-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Sprint-->
+    <Column ss:AutoFitWidth="1" ss:Width="50" /> <!--Status-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Score -->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Cost-->
+      <Column ss:AutoFitWidth="1" ss:Width="45" /> <!--Days-->
+    <Row>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Tema</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>ID</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>História de Usuário</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Critérios de Aceitação</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Comentários</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Sprint</Data>
+      </Cell>
+      <Cell ss:StyleID='table-header'>
+        <Data ss:Type='String'>Status</Data>
+      </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'><span class="translation_missing" title="translation missing: pt.backlog.points">Points</span></Data>
+        </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'>Custo</Data>
+        </Cell>
+        <Cell ss:StyleID='table-header'>
+          <Data ss:Type='String'>Dias</Data>
+        </Cell>
+    </Row>
+        <Row>
+      <Cell>
+  <Data ss:Type='String'>Palestrantes</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> inserir dados de um palestrante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> um palestrante esteja cadastrado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Nome do Palestrante Obrigatório&#10;&#13;b) Cache do Palestrante Obrigatório&#10;&#13;c) RG e CPF obrigatórios&#10;&#13;d) Disponibilidade de datas e horários obrigatória&#10;&#13;e) Título da palestra&#10;&#13;f) Pelo menos uma forma de contato</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para cadastro de palestrante estarão disponíveis campos de Nome, Valor do Cache, Rg, CPF, sexo, idade, disponibilidade para palestra, tema da palestra, título da palestra telefone para contato, email para contato.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Palestrantes</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Criar um cronograma de palestras
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa ser divulgada uma agenda de palestras</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Formato de calendário&#10;&#13;b) Dia editável&#10;&#13;c) Nome do palestrante&#10;&#13;d) Hora da palestra</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>No cronograma de palestras estarão visíveis dias e horários das palestras com nome do palestrante e possibilidade de editar cada entrada no dia. Também possuirá impressão do cronograma detalhado como na versão web, e versão simplificada com somente dias e palestrantes.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Palestrantes</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> gerar certificado para o palestrante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> ele possa ter um comprovante de que realizou uma palestra</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Certificado seja comprovável&#10;&#13;b) Seja possível imprimir&#10;&#13;c) Conste nome do palestrante&#10;&#13;d) Rg do palestrante&#10;&#13;e) Assinatura do *diretor*||**coordenador**</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Certificado do palestrante será gerado afim de confirmar a participação do mesmo na SATI.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Palestrantes</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Palestrante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> me comunicar com os organizadores
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa discutir deforma rápida e confiável assuntos importantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Formato de e-mail interno&#10;&#13;b) Nome do remetente&#10;&#13;c) Nome do destinatário&#10;&#13;d) Assunto da mensagem&#10;&#13;e) Mensagem</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sistema de comunicação interno entre palestrantes e organizadores</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Palestrantes</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PAL5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> delegar voluntários assistente
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> todos os palestrantes tenham pelo menos um voluntário disponível</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Listagem de voluntários com a designação de assistente&#10;&#13;b) Quadro de horários disponiveis por voluntário</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Uma tela para gerenciamento de alunos assistentes com seus palestrantes designados ou a serem designados.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Caixa</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> visualizar o fluxo de entrada e saída de dinheiro
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa controlar os valores recebidos e gastos</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Gastos e entradas separados em categorias&#10;&#13;b) Data/Hora de cada movimentação&#10;&#13;c) Totais por categoria&#10;&#13;d) Definir período de fluxo de caixa&#10;&#13;e) Demostrar forma de pagamento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Formato de tabela para melhor leitura.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Caixa</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> verificar quantidade de dinheiro disponível
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa planejar onde destinar tais fundos.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Demostrar quantidade liquida de dinheiro disponível</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Tela para mostrar quanto dinheiro disponível existe e poder reservar uma certa quantidade.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Caixa</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> visualizar as saídas futuras
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa planejar como pagar</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Data/Hora das próximas saidas&#10;&#13;b) Valor das saidas&#10;&#13;c) Forma de pagamento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Tela para demonstrar as saidas futuras, pagamentos em à ver.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Caixa</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CAI3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> visualizar as entradas futuras
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa planejar o que fazer com tais fundos</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Data/Hora das próximas entradas&#10;&#13;b) Valor das entradas&#10;&#13;c) Forma de pagamento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Tela para demonstrar as entradas futuras, pagamentos em à ver.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Minicurso</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>MIN1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> cadastrar um minicurso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> um minicurso esteja cadastrado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RG e CPF obrigatórios&#10;&#13;b) Nome do professor Obrigatório&#10;&#13;c) Disponibilidade de datas e horários obrigatória&#10;&#13;d) Título do minicurso&#10;&#13;e) Pelo menos uma forma de contato&#10;&#13;f) Cronograma do minicurso</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para cadastro de minicurso estarão disponíveis campos de Nome, Rg, CPF, sexo, idade, disponibilidade para aula, tema do minicurso, título do minicurso telefone para contato, email para contato, cronograma da aula.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Minicurso</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>MIN2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Professor
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> validar presença no minicurso de um aluno
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> ele possa validar o seu certificado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Nome do aluno&#10;&#13;b) Opções de presente ou não&#10;&#13;c) Separados por minicursos diferentes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Simples lista de chamada por minicurso</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Minicurso</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>MIN3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> verificar horários de minicurso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> possa ter base do seu cronograma</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Data e hora do minicurso&#10;&#13;b) Nome do minicurso&#10;&#13;c) Professor&#10;&#13;d) Formato de tabela</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Simples cronograma dos minicursos que o aluno está inscrito</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Certificação</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CEO1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Gerar certificações da SATI
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Imprimir os certificados dos participantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Para certificação da SATI, participante deverá totalizar no minimo dezesseis horas nas atividades</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O sistema valida se o participante tem presença suficiente nas atividades realizadas na SATI para receber o certificado.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Certificação</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CEO3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Gerar certificações de evento diverso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Imprimir os certificados dos participantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Para certificação de evento, o participante deverá ter presença no evento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O sistema valida se o participante tem presença no evento para receber certificado.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Certificação</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>CEO2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Gerar certificações de minicursos
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Imprimir os certificados dos participantes</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Para certificação de minicursos, o participante deverá ter presença no minicurso</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O sistema valida se o participante tem presença no minicurso para receber certificado.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>2.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 42</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.3</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Professores</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PRO1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Cadastrar funções para voluntários
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Designar funções para voluntários</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Inserir atividades para os voluntários&#10;&#13;b) Definir quantidade de voluntários por função </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Cadastros de atividades que serão disponibilizadas para atribuir aos voluntários</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Professores</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>PRO2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Designar funções para voluntários
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Registrar as atividades que os voluntários realizaram na SATI</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome Completo obrigatório&#10;&#13;c) Atribuir atividades para o voluntário </Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para atribuir as atividades para os voluntários</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Alunos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Matricular aluno na sati
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Validar participação do aluno na SATI e gerar certificação</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório&#10;&#13;c) Email obrigatório&#10;&#13;d) RG e CPF obrigatório&#10;&#13;e) Gerar boleto da matrícula</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>As informações necessárias para a matricula do aluno  na sati são: RA, Nome , CPF, RG, sexo, Idade, curso, telefone e email para contato.Boletos gerados com vencimento de 30 dias de antecedência recebem 15% de desconto e com 15 dias de antecedência recebem 5% de desconto.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Alunos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU2</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> me matricular em minicurso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Validar participação no minicurso e gerar certificação</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório&#10;&#13;c) Email obrigatório&#10;&#13;d) RG e CPF obrigatório&#10;&#13;e) Gerar boleto da matrícula</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>As informações necessárias para a matricula do aluno nos minicursos são: RA, Nome , CPF, RG, sexo, Idade, curso, telefone e email para contato. E o aluno poderá se inscrever em no máximo 3 minicursos. Boletos gerados com vencimento de 30 dias de antecedência recebem 15% de desconto e com 15 dias de antecedência recebem 5% de desconto.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Alunos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU6</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> me matricular em evento diverso
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Validar participação no evento e gerar certificação</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Email obrigatório&#10;&#13;c) Nome completo obrigatório&#10;&#13;d) RG e CPF obrigatório&#10;&#13;e) Gerar boleto da matrícula caso haja taxa de inscrição</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>As informações necessárias para a matricula do aluno nos eventos são: RA, Nome , CPF, RG, sexo, Idade, curso, telefone e email para contato.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Alunos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU3</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Acompanhar status da matrícula 
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Confirmar status da matrícula</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Confirmação dos dados do aluno, RA, nome e CPF&#10;&#13;b) Situação da matrícula&#10;&#13;c) Gerar segunda via do boleto</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O aluno poderá acompanha a situação da matrícula na SATI e minicursos e outros eventos.E caso necessário imprimir a segunda via do boleto. Para segunda via dos boletos, os gerados com vencimento de 30 dias de antecedência recebem 15% de desconto e com 15 dias de antecedência recebem 5% de desconto.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Alunos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU4</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Participante
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Cadastrar como voluntário
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Disponibilizar como voluntário</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório&#10;&#13;c) Disponibilidade&#10;&#13;d) Pelo menos uma forma de contato</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O aluno poderá se cadastrar para ser voluntário na SATI e é necessário que o aluno informe a disponibilidade</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Alunos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>ALU5</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Voluntário
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> Acompanhar designação de atividades
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> Verificar atividades atribuidas ao voluntário</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) RA válido&#10;&#13;b) Nome completo obrigatório</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>O voluntário poderá verificar quais tarefas foram atribuídas.</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>3.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 63</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.5</Data>
+  </Cell>
+
+    </Row>
+    <Row>
+      <Cell>
+  <Data ss:Type='String'>Eventos diversos</Data>
+</Cell>
+<Cell ss:Index='2'>
+  <Data ss:Type='String'>EVD1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'><Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Como</Font> Organizador
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Eu quero</Font> cadastrar um eventos
+&#10;&#13;<Font html:Color="#999999" xmlns="http://www.w3.org/TR/REC-html40">Para que</Font> um evento diferente seja cadastrado</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>a) Descrição do evento&#10;&#13;b) Nome do evento&#10;&#13;c) Disponibilidade de datas e horários obrigatória&#10;&#13;d) Cronograma do evento&#10;&#13;e) Se existe taxa para inscrição ou não&#10;&#13;f) Pelo menos uma forma de contato&#10;&#13;g) Não ser um minicurso ou palestra&#10;&#13;h) Nome do organizador</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Para cadastro de eventos diversos que não seja minicursos ou palestras haverá uma tela com descrição do evento, nome, horário, se será taxado ou não, forma de contato com o organizador, nome do organizador, cronograma do evento</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>Sprint 1</Data>
+</Cell>
+<Cell>
+  <Data ss:Type='String'>To do</Data>
+</Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>5.0</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>R$ 104</Data>
+  </Cell>
+  <Cell ss:StyleID='numeric'>
+    <Data ss:Type='String'>0.8</Data>
+  </Cell>
+
+    </Row>
+
+  </Table>
+  <WorksheetOptions xmlns='urn:schemas-microsoft-com:office:excel'>
+    <PageLayoutZoom>0</PageLayoutZoom>
+    <Selected />
+    <Panes />
+    <ProtectObjects>False</ProtectObjects>
+    <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+  <AutoFilter x:Range='R1C1:R1C10' xmlns='urn:schemas-microsoft-com:office:excel'></AutoFilter>
+</Worksheet>
+</Workbook>
