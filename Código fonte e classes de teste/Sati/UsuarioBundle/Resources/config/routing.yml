@@ -1,0 +1,7 @@
+sati_usuario_usuario:
+    resource: "@SatiUsuarioBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+
+sati_usuario_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SatiUsuarioBundle:Default:index }

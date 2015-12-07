@@ -1,0 +1,47 @@
+Sati\ControleSatiBundle\Entity\Eventos:
+    type: entity
+    table: eventos
+    id:
+        eventIdeventos:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: event_ideventos
+            generator:
+                strategy: IDENTITY
+    fields:
+        nomeEvento:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            column: nome_evento
+        fkPalId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: fk_pal_id
+        dataHora:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: data_hora
+        tipoEvento:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+                comment: "0-sati\n1-palestra\n2-minicurso"
+            column: tipo_evento
+        valor:
+            type: float
+            nullable: true
+            precision: 10
+            scale: 0
+    lifecycleCallbacks: {  }

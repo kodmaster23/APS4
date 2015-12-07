@@ -1,0 +1,30 @@
+eventos:
+    path:     /
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:index" }
+
+eventos_show:
+    path:     /{id}/show
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:show" }
+
+eventos_new:
+    path:     /new
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:new" }
+
+eventos_create:
+    path:     /create
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:create" }
+    methods:  POST
+
+eventos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:edit" }
+
+eventos_update:
+    path:     /{id}/update
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:update" }
+    methods:  [POST, PUT]
+
+eventos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SatiControleSatiBundle:Eventos:delete" }
+    methods:  [POST, DELETE]

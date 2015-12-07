@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Caixa</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idcaixa</th>
+                <td>{{ entity.idCaixa }}</td>
+            </tr>
+            <tr>
+                <th>Tipomovimentacao</th>
+                <td>{{ entity.tipoMovimentacao }}</td>
+            </tr>
+            <tr>
+                <th>Statusmoventacao</th>
+                <td>{{ entity.statusMoventacao }}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{ entity.data|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Origem</th>
+                <td>{{ entity.origem }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('caixa') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('caixa_edit', { 'id': entity.idCaixa }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

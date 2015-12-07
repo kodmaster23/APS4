@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Boleto list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Bolidboleto</th>
+                <th>Bolcodigobarra</th>
+                <th>Fkusuid</th>
+                <th>Boldatavencimento</th>
+                <th>Bolvalor</th>
+                <th>Bolstatus</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('boleto_show', { 'id': entity.bolIdboleto }) }}">{{ entity.bolIdboleto }}</a></td>
+                <td>{{ entity.bolCodigobarra }}</td>
+                <td>{{ entity.fkUsuId }}</td>
+                <td>{% if entity.bolDatavencimento %}{{ entity.bolDatavencimento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.bolValor }}</td>
+                <td>{{ entity.bolStatus }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('boleto_show', { 'id': entity.bolIdboleto }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('boleto_edit', { 'id': entity.bolIdboleto }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('boleto_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

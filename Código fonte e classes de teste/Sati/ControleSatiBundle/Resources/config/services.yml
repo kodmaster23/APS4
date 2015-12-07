@@ -1,0 +1,4 @@
+services:
+#    sati_controle_sati.example:
+#        class: Sati\ControleSatiBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

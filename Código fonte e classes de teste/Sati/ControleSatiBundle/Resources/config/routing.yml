@@ -1,0 +1,15 @@
+sati_controle_sati_caixa:
+    resource: "@SatiControleSatiBundle/Resources/config/routing/caixa.yml"
+    prefix:   /caixa
+
+sati_controle_sati_eventos:
+    resource: "@SatiControleSatiBundle/Resources/config/routing/eventos.yml"
+    prefix:   /eventos
+
+sati_controle_sati_boleto:
+    resource: "@SatiControleSatiBundle/Resources/config/routing/boleto.yml"
+    prefix:   /boleto
+
+sati_controle_sati_homepage:
+    path:     /{name}
+    defaults: { _controller: SatiControleSatiBundle:Default:index }

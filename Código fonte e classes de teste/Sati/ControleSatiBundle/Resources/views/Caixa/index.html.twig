@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Caixa list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idcaixa</th>
+                <th>Tipomovimentacao</th>
+                <th>Statusmoventacao</th>
+                <th>Data</th>
+                <th>Origem</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('caixa_show', { 'id': entity.idCaixa }) }}">{{ entity.idCaixa }}</a></td>
+                <td>{{ entity.tipoMovimentacao }}</td>
+                <td>{{ entity.statusMoventacao }}</td>
+                <td>{% if entity.data %}{{ entity.data|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.origem }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('caixa_show', { 'id': entity.idCaixa }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('caixa_edit', { 'id': entity.idCaixa }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('caixa_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

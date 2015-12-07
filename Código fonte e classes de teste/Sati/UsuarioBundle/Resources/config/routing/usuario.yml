@@ -1,0 +1,30 @@
+usuario:
+    path:     /
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:index" }
+
+usuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:show" }
+
+usuario_new:
+    path:     /new
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:new" }
+
+usuario_create:
+    path:     /create
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:create" }
+    methods:  POST
+
+usuario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:edit" }
+
+usuario_update:
+    path:     /{id}/update
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:update" }
+    methods:  [POST, PUT]
+
+usuario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SatiUsuarioBundle:Usuario:delete" }
+    methods:  [POST, DELETE]

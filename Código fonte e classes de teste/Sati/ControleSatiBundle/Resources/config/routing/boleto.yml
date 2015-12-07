@@ -1,0 +1,30 @@
+boleto:
+    path:     /
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:index" }
+
+boleto_show:
+    path:     /{id}/show
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:show" }
+
+boleto_new:
+    path:     /new
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:new" }
+
+boleto_create:
+    path:     /create
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:create" }
+    methods:  POST
+
+boleto_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:edit" }
+
+boleto_update:
+    path:     /{id}/update
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:update" }
+    methods:  [POST, PUT]
+
+boleto_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SatiControleSatiBundle:Boleto:delete" }
+    methods:  [POST, DELETE]

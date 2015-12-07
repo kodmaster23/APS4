@@ -1,0 +1,45 @@
+Sati\UsuarioBundle\Entity\Usuario:
+    type: entity
+    table: usuario
+    id:
+        usuId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: usu_id
+            generator:
+                strategy: IDENTITY
+    fields:
+        username:
+            type: string
+            nullable: false
+            length: 16
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 30
+            options:
+                fixed: false
+        createTime:
+            type: datetime
+            nullable: true
+            options:
+                default: CURRENT_TIMESTAMP
+            column: create_time
+        admin:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: "0-admin\n1-voluntario\n2-aluno"
+    lifecycleCallbacks: {  }

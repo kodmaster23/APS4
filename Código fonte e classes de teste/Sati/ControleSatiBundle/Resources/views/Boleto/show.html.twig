@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Boleto</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Bolidboleto</th>
+                <td>{{ entity.bolIdboleto }}</td>
+            </tr>
+            <tr>
+                <th>Bolcodigobarra</th>
+                <td>{{ entity.bolCodigobarra }}</td>
+            </tr>
+            <tr>
+                <th>Fkusuid</th>
+                <td>{{ entity.fkUsuId }}</td>
+            </tr>
+            <tr>
+                <th>Boldatavencimento</th>
+                <td>{{ entity.bolDatavencimento|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Bolvalor</th>
+                <td>{{ entity.bolValor }}</td>
+            </tr>
+            <tr>
+                <th>Bolstatus</th>
+                <td>{{ entity.bolStatus }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('boleto') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('boleto_edit', { 'id': entity.bolIdboleto }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

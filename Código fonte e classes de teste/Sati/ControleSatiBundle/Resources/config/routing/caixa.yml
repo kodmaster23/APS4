@@ -1,0 +1,30 @@
+caixa:
+    path:     /
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:index" }
+
+caixa_show:
+    path:     /{id}/show
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:show" }
+
+caixa_new:
+    path:     /new
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:new" }
+
+caixa_create:
+    path:     /create
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:create" }
+    methods:  POST
+
+caixa_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:edit" }
+
+caixa_update:
+    path:     /{id}/update
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:update" }
+    methods:  [POST, PUT]
+
+caixa_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SatiControleSatiBundle:Caixa:delete" }
+    methods:  [POST, DELETE]

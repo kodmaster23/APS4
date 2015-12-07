@@ -1,0 +1,67 @@
+Sati\ControleSatiBundle\Entity\Boleto:
+    type: entity
+    table: boleto
+    indexes:
+        fk_usu_id_idx:
+            columns:
+                - fk_usu_id
+        evento_idx:
+            columns:
+                - fk_event_ideventos
+    uniqueConstraints:
+        bol_codigobarra_UNIQUE:
+            columns:
+                - bol_codigobarra
+    id:
+        bolIdboleto:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: bol_idboleto
+            generator:
+                strategy: IDENTITY
+    fields:
+        bolCodigobarra:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: bol_codigobarra
+        fkUsuId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: fk_usu_id
+        bolDatavencimento:
+            type: date
+            nullable: false
+            column: bol_datavencimento
+        bolValor:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            column: bol_valor
+        bolStatus:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                comment: "0 - Pendente\n1 - Pago\n3 - Estornado"
+            column: bol_status
+    manyToOne:
+        fkEventeventos:
+            targetEntity: Eventos
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_event_ideventos:
+                    referencedColumnName: event_ideventos
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
